@@ -6,7 +6,7 @@ import LaTeXField from "./LaTeXField";
 
 const MainContainer = () => {
     const [state, setState] = useState({
-        plaintext: "Integral of f with respect to x in range 2 to 3 is 5",
+        plaintext: "Integral of f with respect to x in range 2 to 3 is 5.",
         latex: "\\int\\limits_{2}^{3}f dx = 5",
     });
 

@@ -7,10 +7,16 @@ const LaTeXField = ({ value, onChange }) => {
     const [codeView, setCodeView] = useState(false);
     const [copied, setCopied] = useState(false);
 
+    const toggleCopy = () => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 5000);
+    };
+
     return (
         <Card className={`shadow-sm textfield-container${codeView ? "-dark" : ""}`}>
             {value ? (
                 <Button
+                    outline
                     color={codeView ? "light" : "dark"}
                     className="code-toggle"
                     onClick={() => setCodeView(!codeView)}
@@ -34,16 +40,10 @@ const LaTeXField = ({ value, onChange }) => {
                 )}
             </CardBody>
             <CardFooter className="px-3 d-flex justify-content-end">
-                <Button color="danger" className="mr-2" disabled={value === ""}>
+                <Button color="danger" className="mr-3" disabled={value === ""}>
                     DOWNLOAD .TEX
                 </Button>
-                <CopyToClipboard
-                    text={value}
-                    onCopy={() => {
-                        setCopied(true);
-                        setTimeout(() => setCopied(false), 5000);
-                    }}
-                >
+                <CopyToClipboard text={value} onCopy={toggleCopy}>
                     <Button color="primary" disabled={value === ""}>
                         {copied ? "COPIED!" : "COPY CODE"}
                     </Button>

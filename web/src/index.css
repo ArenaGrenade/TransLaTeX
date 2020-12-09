@@ -34,6 +34,7 @@ code {
 .textfield-input:hover,
 .textfield-input:focus,
 .textfield-input {
+    font-size: 1.1em !important;
     height: 100% !important;
     border: none !important;
     box-shadow: none !important;
@@ -56,6 +57,7 @@ code {
 }
 
 .card-footer {
+    border: none !important;
     background-color: #00000000 !important;
 }
 
