@@ -14,10 +14,19 @@ const MainContainer = () => {
         setState({ ...state, [e.target.name]: e.target.value });
     };
 
+    const handleTranslate = () => {
+        // TODO: API callback
+        console.log(state.plaintext);
+    };
+
     return (
         <Row className="p-2 p-md-4">
             <Col md className="my-2">
-                <PlaintextField value={state.plaintext} onChange={handleChange} />
+                <PlaintextField
+                    value={state.plaintext}
+                    onChange={handleChange}
+                    onTranslate={handleTranslate}
+                />
             </Col>
             <Col md className="my-2">
                 <LaTeXField value={state.latex} onChange={handleChange} />

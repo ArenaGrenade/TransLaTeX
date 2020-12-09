@@ -1,6 +1,6 @@
 import { Button, Card, CardBody, CardFooter, Input } from "reactstrap";
 
-const PlaintextField = ({ value, onChange }) => {
+const PlaintextField = ({ value, onChange, onTranslate }) => {
     return (
         <Card className="shadow-sm textfield-container">
             <CardBody className="p-3 p-md-4">
@@ -15,7 +15,7 @@ const PlaintextField = ({ value, onChange }) => {
                 />
             </CardBody>
             <CardFooter className="px-3 d-flex justify-content-end">
-                <Button color="success" disabled={value === ""}>
+                <Button color="success" disabled={value === ""} onClick={onTranslate}>
                     TRANSLATE
                 </Button>
             </CardFooter>
