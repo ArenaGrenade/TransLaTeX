@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Row, Col } from "reactstrap";
+
 import PlaintextField from "./PlaintextField";
 import LaTeXField from "./LaTeXField";
 
@@ -14,11 +15,11 @@ const MainContainer = () => {
     };
 
     return (
-        <Row className="p-4">
+        <Row className="p-2 p-md-4">
             <Col md className="my-2">
                 <PlaintextField value={state.plaintext} onChange={handleChange} />
             </Col>
-            <Col className="my-2">
+            <Col md className="my-2">
                 <LaTeXField value={state.latex} onChange={handleChange} />
             </Col>
         </Row>

@@ -1,5 +1,7 @@
-const TranslateButton = () => {
-    return "translatebutton";
+import { Button } from "reactstrap";
+
+const TransLaTeXButton = () => {
+    return <Button className="translatex-button"> TransLaTeX </Button>;
 };
 
-export default TranslateButton;
+export default TransLaTeXButton;

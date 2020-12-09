@@ -1,19 +1,24 @@
-import { Card, CardBody, Input } from "reactstrap";
+import { Button, Card, CardBody, CardFooter, Input } from "reactstrap";
 
 const PlaintextField = ({ value, onChange }) => {
     return (
-        <Card className="shadow p-2 p-md-3 textfield-container">
-            <CardBody>
+        <Card className="shadow-sm textfield-container">
+            <CardBody className="p-3 p-md-4">
                 <Input
                     name="plaintext"
                     type="textarea"
                     className="textfield-input"
-                    placeholder="Type something in plain text..."
+                    placeholder="Type some plain text..."
                     value={value}
                     onChange={onChange}
                     // TODO: better placeholder, possibly an example
                 />
             </CardBody>
+            <CardFooter className="d-flex justify-content-end">
+                <Button color="dark" disabled={value === ""}>
+                    TRANSLATE
+                </Button>
+            </CardFooter>
         </Card>
     );
 };
