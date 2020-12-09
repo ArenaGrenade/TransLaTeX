@@ -12,6 +12,20 @@ const LaTeXField = ({ value, onChange }) => {
         setTimeout(() => setCopied(false), 5000);
     };
 
+    const triggerDownload = () => {
+        const contents =
+            `\\documentclass[14pt]{extreport}\n` +
+            `\\begin{document}\n` +
+            `\t$$${value}$$\n` +
+            `\\end{document}\n`;
+        const dAnchor = document.createElement("a");
+        const file = new Blob([contents], { type: "text/plain" });
+        dAnchor.href = URL.createObjectURL(file);
+        dAnchor.download = `TransLaTeX-${Math.round(Date.now() / 1000)}.tex`;
+        document.body.appendChild(dAnchor);
+        dAnchor.click();
+    };
+
     return (
         <Card className={`shadow-sm textfield-container${codeView ? "-dark" : ""}`}>
             {value ? (
@@ -40,7 +54,12 @@ const LaTeXField = ({ value, onChange }) => {
                 )}
             </CardBody>
             <CardFooter className="px-3 d-flex justify-content-end">
-                <Button color="danger" className="mr-3" disabled={value === ""}>
+                <Button
+                    color="danger"
+                    className="mr-3"
+                    disabled={value === ""}
+                    onClick={triggerDownload}
+                >
                     DOWNLOAD .TEX
                 </Button>
                 <CopyToClipboard text={value} onCopy={toggleCopy}>
