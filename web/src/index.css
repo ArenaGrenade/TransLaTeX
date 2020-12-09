@@ -45,8 +45,9 @@ code {
 .textfield-input-dark:hover,
 .textfield-input-dark:focus,
 .textfield-input-dark {
-    background-color: #222;
     color: #eee;
+    background-color: #222;
+    font-family: "Fira Code", monospace;
     height: 100% !important;
     border: none !important;
     box-shadow: none !important;
