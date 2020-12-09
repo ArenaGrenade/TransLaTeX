@@ -64,3 +64,10 @@ code {
     top: 15px;
     right: 15px;
 }
+
+@media (max-width: 768px) {
+    .code-toggle {
+        top: auto;
+        bottom: 75px;
+    }
+}
