@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Button, Card, CardBody, CardFooter, Input } from "reactstrap";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import Latex from "react-latex-next";
 
 const LaTeXField = ({ value, onChange }) => {
     const [codeView, setCodeView] = useState(false);
+    const [copied, setCopied] = useState(false);
 
     return (
         <Card className={`shadow-sm textfield-container${codeView ? "-dark" : ""}`}>
@@ -35,9 +37,17 @@ const LaTeXField = ({ value, onChange }) => {
                 <Button color="danger" className="mr-2" disabled={value === ""}>
                     DOWNLOAD .TEX
                 </Button>
-                <Button color="primary" disabled={value === ""}>
-                    COPY
-                </Button>
+                <CopyToClipboard
+                    text={value}
+                    onCopy={() => {
+                        setCopied(true);
+                        setTimeout(() => setCopied(false), 5000);
+                    }}
+                >
+                    <Button color="primary" disabled={value === ""}>
+                        {copied ? "COPIED!" : "COPY CODE"}
+                    </Button>
+                </CopyToClipboard>
             </CardFooter>
         </Card>
     );
