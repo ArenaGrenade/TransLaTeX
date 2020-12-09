@@ -6,7 +6,7 @@ import MainContainer from "./components/MainContainer";
 
 const App = () => {
     return (
-        <Container fluid>
+        <Container fluid className="px-md-5">
             <Banner />
             <MainContainer />
         </Container>
