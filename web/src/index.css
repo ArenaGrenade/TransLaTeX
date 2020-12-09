@@ -25,6 +25,11 @@ code {
     height: 60vh;
 }
 
+.textfield-container-dark {
+    background-color: #222;
+    height: 60vh;
+}
+
 .textfield-input:active,
 .textfield-input:hover,
 .textfield-input:focus,
@@ -36,6 +41,25 @@ code {
     resize: none;
 }
 
+.textfield-input-dark:active,
+.textfield-input-dark:hover,
+.textfield-input-dark:focus,
+.textfield-input-dark {
+    background-color: #222;
+    color: #eee;
+    height: 100% !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    resize: none;
+}
+
 .card-footer {
-    background-color: #fff !important;
+    background-color: #00000000 !important;
+}
+
+.code-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
 }

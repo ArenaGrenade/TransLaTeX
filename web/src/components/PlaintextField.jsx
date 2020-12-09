@@ -14,7 +14,7 @@ const PlaintextField = ({ value, onChange }) => {
                     // TODO: better placeholder, possibly an example
                 />
             </CardBody>
-            <CardFooter className="d-flex justify-content-end">
+            <CardFooter className="px-3 d-flex justify-content-end">
                 <Button color="dark" disabled={value === ""}>
                     TRANSLATE
                 </Button>
