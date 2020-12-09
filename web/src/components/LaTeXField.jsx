@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, CardBody, CardFooter, Input } from "reactstrap";
+import Latex from "react-latex-next";
 
 const LaTeXField = ({ value, onChange }) => {
     const [codeView, setCodeView] = useState(false);
@@ -16,15 +17,19 @@ const LaTeXField = ({ value, onChange }) => {
                 </Button>
             ) : null}
             <CardBody className="p-3 p-md-4">
-                <Input
-                    name="latex"
-                    type="textarea"
-                    className={`textfield-input${codeView ? "-dark" : ""}`}
-                    placeholder="Type some LaTeX..."
-                    value={value}
-                    onChange={onChange}
-                    // TODO: better placeholder, possibly an example
-                />
+                {codeView ? (
+                    <Input
+                        name="latex"
+                        type="textarea"
+                        className="textfield-input-dark"
+                        placeholder="Type some LaTeX..."
+                        value={value}
+                        onChange={onChange}
+                        // TODO: better placeholder, possibly an example
+                    />
+                ) : (
+                    <Latex>{`$$ ${value} $$`}</Latex>
+                )}
             </CardBody>
             <CardFooter className="px-3 d-flex justify-content-end">
                 <Button color="danger" className="mr-2" disabled={value === ""}>
