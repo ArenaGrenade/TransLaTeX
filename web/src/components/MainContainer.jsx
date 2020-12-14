@@ -17,8 +17,9 @@ const MainContainer = () => {
     };
 
     const handleTranslate = async () => {
-        const data = await translate(state.plaintext);
-        setState({ ...state, latex: data.choices[0].text });
+        const res = await translate(state.plaintext);
+        console.log(res);
+        // setState({ ...state, latex: res.choices[0].text });
     };
 
     return (
