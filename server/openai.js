@@ -1,5 +1,5 @@
-const HOST = "https://api.openai.com/v1/engines/curie";
-const TOKEN = "QWERTYUIOP";
+const HOST = "https://api.openai.com/v1/engines/ada";
+const TOKEN = "sk-Xf4y0b1UTtNT7ALOp9d5J0sDklAO9NHO7gmKneV2";
 
 module.exports = {
     translate: async (plaintext) => {
@@ -22,8 +22,15 @@ module.exports = {
         };
 
         try {
-            return await fetch(`${HOST}/completions`, requestOptions);
+            console.log(`Requesting at ${HOST}/completions`);
+            fetch(`${HOST}/completions`, requestOptions)
+            .then(response => response.json())
+            .then(data => { 
+                console.log(JSON.stringify(data));
+                return data;
+            });
         } catch (err) {
+            console.log("There was an error fetching completion from openai" + err)
             return err.response;
         }
     },
