@@ -12,7 +12,8 @@ export const translate = async (plaintext) => {
     };
 
     try {
-        return await fetch(`${HOST}/completions`, requestOptions);
+        var text = (await fetch(`${HOST}/completions`, requestOptions)).json();
+        return text;
     } catch (err) {
         return err.response;
     }
