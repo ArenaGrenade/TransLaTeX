@@ -1,19 +1,18 @@
-const HOST = "https://api.openai.com/v1/engines/ada";
-const TOKEN = "sk-Xf4y0b1UTtNT7ALOp9d5J0sDklAO9NHO7gmKneV2";
+const HOST = "curie";
 
 module.exports = {
     translate: async (plaintext) => {
         const examples =
-            "What follows are conversions from descriptions of equations to their equivalent in LaTeX.\n###\n\nIntegrate sin of x with limits from 0 to pi / 2 with respect to x\n\\int_{0}^{\\pi / 2} x dx\n\nIntegrate without limits the function x with respect to x\n\\int x dx\n\nEquate the exponential of inverse tangent of x to 20\ne^{arctan(x)} = 20\n\nFind the differential of sin of y with respect to y\n\\frac{d}{dy} \\sin(y)\n\nFind the partial derivative of 2xy with respect to y\n\\frac{\\partial}{\\partial y} (2xy)\n\nFind the partial derivative of log of xy with respect to x\n\\frac{\\partial}{\\partial x} \\log(xy)\n\nIntegrate twice without limits the function sin of x multiplied by log of y with respect to x and y\n\\int \\sin(x) \\log(y) \\, dx \\, dy\n\n";
+            "What follows are conversions from descriptions of equations to their equivalent in LaTeX.\n###\nIntegrate sin of x with limits from 0 to pi / 2 with respect to x $$$ \\int_{0}^{\\pi / 2} x dx\nIntegrate without limits the function x with respect to x $$$ \\int x dx\nEquate the exponential of inverse tangent of x to 20 $$$ e^{arctan(x)} = 20\nFind the differential of sin of y with respect to y $$$ \\frac{d}{dy} \\sin(y)\nFind the partial derivative of 2xy with respect to y $$$ \\frac{\\partial}{\\partial y} (2xy)\nFind the partial derivative of log of xy with respect to x $$$ \\frac{\\partial}{\\partial x} \\log(xy)\nIntegrate twice without limits the function sin of x multiplied by log of y with respect to x and y $$$ \\int \\sin(x) \\log(y) \\, dx \\, dy\n";
 
         const requestOptions = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: "Bearer " + TOKEN,
+                "Authorization": "Bearer " + process.env.TOKEN,
             },
             body: JSON.stringify({
-                prompt: examples + plaintext + "\n",
+                prompt: examples + plaintext + " $$$",
                 max_tokens: 60,
                 temperature: 0.1,
                 n: 5,
@@ -21,17 +20,15 @@ module.exports = {
             }),
         };
 
-        try {
-            console.log(`Requesting at ${HOST}/completions`);
-            fetch(`${HOST}/completions`, requestOptions)
-            .then(response => response.json())
-            .then(data => { 
-                console.log(JSON.stringify(data));
-                return data;
-            });
-        } catch (err) {
-            console.log("There was an error fetching completion from openai" + err)
-            return err.response;
-        }
+        return new Promise(resolve => {
+            try {
+                fetch(`https://api.openai.com/v1/engines/${HOST}/completions`, requestOptions)
+                .then(response => response.json())
+                .then(data => resolve(JSON.stringify(data.choices[0].text)));
+            } catch (err) {
+                console.log(JSON.stringify(err.response, null, 3));
+                resolve(err.response);
+            }
+        });
     },
 };
