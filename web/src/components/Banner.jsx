@@ -6,7 +6,7 @@ const Banner = () => {
             fluid
             className="text-center banner-container d-flex justify-content-center align-items-center"
         >
-            banner
+            <img src="/banner.svg" className="banner-img" alt="TransLaTeX" />
         </Container>
     );
 };

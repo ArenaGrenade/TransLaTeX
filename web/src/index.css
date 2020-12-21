@@ -20,6 +20,10 @@ code {
     height: 30vh;
 }
 
+.banner-img {
+    width: 35vw;
+}
+
 .textfield-container {
     background-color: #fff !important;
     height: 60vh;
