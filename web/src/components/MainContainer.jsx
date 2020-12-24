@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Row, Col } from "reactstrap";
+import { withAlert } from 'react-alert';
 
 import { translate } from "../api";
 
 import PlaintextField from "./PlaintextField";
 import LaTeXField from "./LaTeXField";
 
-const MainContainer = () => {
+const MainContainer = ({ alert }) => {
     const [state, setState] = useState({
         plaintext: "Integration of x in the range 2 to 3",
         latex: "\\int\\limits_{2}^{3}x dx",
@@ -17,7 +18,7 @@ const MainContainer = () => {
     };
 
     const handleTranslate = async () => {
-        const res = await translate(state.plaintext);
+        const res = await translate(state.plaintext, alert);
         setState({ ...state, latex: res });
     };
 
@@ -37,4 +38,4 @@ const MainContainer = () => {
     );
 };
 
-export default MainContainer;
+export default withAlert()(MainContainer);
