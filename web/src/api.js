@@ -12,16 +12,17 @@ export const translate = async (plaintext, alert) => {
     };
 
     try {
-        var text = await fetch(`${HOST}/completions`, requestOptions);
+        var res = await fetch(`${HOST}/completions`, requestOptions);
+        var json = await res.json();
+        if (json.reason) throw json;
         
         // Parse the remaining time to print in the alert
-        var remaining = Number(text.headers.get('x-ratelimit-remaining'));
+        var remaining = Number(res.headers.get('x-ratelimit-remaining'));
+        if (remaining === 0) alert.show("You have exceeded the rate limit. Please try later.", {type: 'info'});
 
-        if (remaining === 0) {
-            alert.show("You have exceeded the rate limit. Please try later.");
-        }
-        return text.json();
+        return json.latex;
     } catch (err) {
-        return err.response;
+        alert.show("An error has occured!", {type: 'error'});
+        return err.reason;
     }
 };

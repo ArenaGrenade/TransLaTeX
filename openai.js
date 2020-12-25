@@ -1,4 +1,4 @@
-const HOST = "curie";
+const HOST = "ada";
 
 module.exports = {
     translate: async (plaintext) => {
@@ -20,15 +20,14 @@ module.exports = {
             }),
         };
 
+        const res = await fetch(`https://api.openai.com/v1/engines/${HOST}/completions`, requestOptions);
+        var json = await res.json();
+
+        if (!res.ok) json = {"reason": "OpenAI Error. Try Again!"};
+        else json = {"latex": json.choices[0].text};
+
         return new Promise(resolve => {
-            try {
-                fetch(`https://api.openai.com/v1/engines/${HOST}/completions`, requestOptions)
-                .then(response => response.json())
-                .then(data => resolve(JSON.stringify(data.choices[0].text)));
-            } catch (err) {
-                console.log(JSON.stringify(err.response, null, 3));
-                resolve(err.response);
-            }
+            resolve(json);
         });
     },
 };

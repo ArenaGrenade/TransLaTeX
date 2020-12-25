@@ -4,14 +4,13 @@ import "./index.css";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import reportWebVitals from "./reportWebVitals";
-import { transitions, positions, types, Provider as AlertProvider } from 'react-alert'
+import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 
 // optional configuration
 const options = {
     position: positions.TOP_CENTER,
     timeout: 5000,
-    type: types.ERROR,
     transition: transitions.SCALE,
     offset: '230px',
 }

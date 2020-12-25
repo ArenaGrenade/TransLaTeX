@@ -19,6 +19,7 @@ const MainContainer = ({ alert }) => {
 
     const handleTranslate = async () => {
         const res = await translate(state.plaintext, alert);
+        console.log(res);
         setState({ ...state, latex: res });
     };
 
