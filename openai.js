@@ -1,4 +1,4 @@
-const HOST = "ada";
+const HOST = "curie";
 
 module.exports = {
     translate: async (plaintext) => {
