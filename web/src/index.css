@@ -16,12 +16,21 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.banner-container {
-    height: 30vh;
+.banner-img {
+    width: calc(300px + 15vw);
 }
 
-.banner-img {
-    width: 35vw;
+.poweredby-text {
+    font-size: 1.2em;
+}
+
+.poweredby-img {
+    width: calc(80px + 1.2vw);
+}
+
+.github-img {
+    width: 32px;
+    margin-left: 2px;
 }
 
 .textfield-container {

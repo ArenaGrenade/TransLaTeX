@@ -4,10 +4,21 @@ const Banner = () => {
     return (
         <Container
             fluid
-            className="text-center banner-container d-flex flex-column justify-content-center align-items-center"
+            className="text-center mt-5 pt-3 mb-4 d-flex flex-column justify-content-center align-items-center"
         >
-            <img src="/banner.svg" className="banner-img" alt="TransLaTeX" />
-            <span classname="repo-link">Hello there! Please visit us on <a href="https://github.com/ArenaGrenade/TransLaTeX">github</a>!</span>
+            <div>
+                <img src="/banner.svg" className="banner-img" alt="TransLaTeX" />
+                <div className="poweredby-text text-right">
+                    <a href="https://beta.openai.com/" target="_blank" rel="noreferrer">
+                        <img
+                            src="https://cdn.openai.com/API/logo-assets/powered-by-openai.svg"
+                            width="150"
+                            alt="Powered by OpenAI"
+                            className="mr-2"
+                        />
+                    </a>
+                </div>
+            </div>
         </Container>
     );
 };
