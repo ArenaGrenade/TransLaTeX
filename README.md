@@ -1,5 +1,7 @@
 # TransLaTeX
 
+### [Deployed App](http://translatex.herokuapp.com)
+
 <p align="center">
   <img src="./ReadmeLogo.png"/>
 </p>
